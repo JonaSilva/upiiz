@@ -1,0 +1,130 @@
+<div class="card-content">
+  <p-card class="card-content">
+      
+    <div class="ui-g">
+      <div class="ui-g-12 ui-md-6 ">
+        <span class="ui-float-label">
+          <input id="float-input" type="text" size="1" pInputText>
+          <label for="float-input">Apellido paterno</label>
+        </span>
+      </div>
+      <div class="ui-g-12 ui-md-6 ">
+        <span class="ui-float-label">
+          <input id="float-input" type="text" size="1" pInputText>
+          <label for="float-input">Apellido materno</label>
+        </span>
+      </div>
+      <div class="ui-g-12 ui-md-6 ">
+        <span class="ui-float-label">
+          <input id="float-input" type="text" size="1" pInputText>
+          <label for="float-input">Nombre(s)</label>
+        </span>
+      </div>
+      <div class="ui-g-12 ui-md-6 ">
+        <span class="ui-float-label">
+          <input id="float-input" type="text" size="1" pInputText>
+          <label for="float-input">Teléfono fijo</label>
+        </span>
+      </div>
+      <div class="ui-g-12 ui-md-6 ">
+        <span class="ui-float-label">
+          <input id="float-input" type="text" size="1" pInputText>
+          <label for="float-input">Teléfono celular </label>
+        </span>
+      </div>
+      <div class="ui-g-12 ui-md-6 ">
+        <span class="ui-float-label">
+          <input id="float-input" type="text" size="1" pInputText>
+          <label for="float-input">Correo Electrónico</label>
+        </span>
+      </div>
+    </div>
+
+
+    <h4>Municipio: {{municipioSelecionado ? municipioSelecionado.nombre : ''}}</h4>
+    <p-dropdown [options]="municipios" [autoWidth]="false" class="drop-down" [(ngModel)]="municipioSelecionado" placeholder="seleciona un municipio"
+      optionLabel="nombre" [style]="{'width':'%'}"></p-dropdown>
+    <h4>Turno en el que estudias actualmente: {{TurnoBselecionado ? TurnoBselecionado.turno : ''}}</h4>
+    <p-dropdown [options]="turnob" class="drop-down" [(ngModel)]="TurnoBselecionado" placeholder="seleciona un Turno" optionLabel="turno"></p-dropdown>
+
+    <h4>Turno en el que deseas llevar el curso en el Politécnico : {{TurnoPselecionado ? TurnoPselecionado.turno : ''}}</h4>
+    <p-listbox [options]="turnop" [(ngModel)]="TurnoPselecionado" optionLabel="turno" [style]="{'width':'100%'}"></p-listbox>
+
+
+    <h3 class="first">Carrera de Interés (Primera opción) </h3>
+    Primera opción {{primeraOpcion||''}}
+    <div class="ui-g" style="width:250px;margin-bottom:10px">
+      <div class="ui-g-12">
+        <p-radioButton name="primeraOpcG" value="Ambiental" label="Ambiental" [(ngModel)]="primeraOpcion"></p-radioButton>
+      </div>
+      <div class="ui-g-12">
+        <p-radioButton name="primeraOpcG" value="Alimentos" label="Alimentos" [(ngModel)]="primeraOpcion"></p-radioButton>
+      </div>
+      <div class="ui-g-12">
+        <p-radioButton name="primeraOpcG" value="Mecatrónica" label="Mecatrónica" [(ngModel)]="primeraOpcion"></p-radioButton>
+      </div>
+      <div class="ui-g-12">
+        <p-radioButton name="primeraOpcG" value="Metalúrgica" label="Metalúrgica" [(ngModel)]="primeraOpcion"></p-radioButton>
+      </div>
+      <div class="ui-g-12">
+        <p-radioButton name="primeraOpcG" value="Sistemas" label="Sistemas" [(ngModel)]="primeraOpcion"></p-radioButton>
+      </div>
+    </div>
+
+    <h3 class="first">Carrera de Interés (Segunda opción) </h3>
+    Segunda opción {{segundaOpcion||''}}
+    <div class="ui-g" style="width:250px;margin-bottom:10px">
+      <div class="ui-g-12">
+        <p-radioButton name="segundaOpcG" value="Ambiental" label="Ambiental" [(ngModel)]="segundaOpcion"></p-radioButton>
+      </div>
+      <div class="ui-g-12">
+        <p-radioButton name="segundaOpcG" value="Alimentos" label="Alimentos" [(ngModel)]="segundaOpcion"></p-radioButton>
+      </div>
+      <div class="ui-g-12">
+        <p-radioButton name="segundaOpcG" value="Mecatrónica" label="Mecatrónica" [(ngModel)]="segundaOpcion"></p-radioButton>
+      </div>
+      <div class="ui-g-12">
+        <p-radioButton name="segundaOpcG" value="Metalúrgica" label="Metalúrgica" [(ngModel)]="segundaOpcion"></p-radioButton>
+      </div>
+      <div class="ui-g-12">
+        <p-radioButton name="segundaOpcG" value="Sistemas" label="Sistemas" [(ngModel)]="segundaOpcion"></p-radioButton>
+      </div>
+    </div>
+
+    <h3 class="first">Carrera de Interés (Segunda opción) </h3>
+    Tercera opción {{terceraOpcion||''}}
+    <div class="ui-g" style="width:250px;margin-bottom:10px">
+      <div class="ui-g-12">
+        <p-radioButton name="terceraOpcG" value="Ambiental" label="Ambiental" [(ngModel)]="terceraOpcion"></p-radioButton>
+      </div>
+      <div class="ui-g-12">
+        <p-radioButton name="terceraOpcG" value="Alimentos" label="Alimentos" [(ngModel)]="terceraOpcion"></p-radioButton>
+      </div>
+      <div class="ui-g-12">
+        <p-radioButton name="terceraOpcG" value="Mecatrónica" label="Mecatrónica" [(ngModel)]="terceraOpcion"></p-radioButton>
+      </div>
+      <div class="ui-g-12">
+        <p-radioButton name="terceraOpcG" value="Metalúrgica" label="Metalúrgica" [(ngModel)]="terceraOpcion"></p-radioButton>
+      </div>
+      <div class="ui-g-12">
+        <p-radioButton name="terceraOpcG" value="Sis" label="Sistemas" [(ngModel)]="terceraOpcion"></p-radioButton>
+      </div>
+    </div>
+
+
+
+    <p-button label="Enviar"></p-button>
+    <p-footer>
+
+    </p-footer>
+  </p-card>
+</div>
+
+<div>
+  <div class="page-header">
+    <h3>Formulario de Pre-registro</h3>
+  </div>
+  <div>
+
+  </div>
+</div>
