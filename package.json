@@ -8,15 +8,18 @@
     "start": "node app"
   },
   "dependencies": {
-    "express": "*",
-    "mongoose": "*",
     "bcryptjs": "*",
-    "cors": "*",
-    "jsonwebtoken": "*",
-    "body-parser": "*",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.5.5",
     "passport": "*",
-    "passport-jwt": "*"
+    "passport-jwt": "^4.0.0"
   },
   "author": "Jonathan Silva - Cesar Rivera",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@angular/cli": "^7.3.8"
+  }
 }
