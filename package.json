@@ -20,6 +20,6 @@
   "author": "Jonathan Silva - Cesar Rivera",
   "license": "ISC",
   "devDependencies": {
-    "@angular/cli": "^9.1.15"
+    "@angular/cli": "^10.2.1"
   }
 }
