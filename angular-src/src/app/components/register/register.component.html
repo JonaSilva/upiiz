@@ -42,32 +42,32 @@
 
 
     <h4>Municipio: {{municipioSelecionado ? municipioSelecionado.nombre : ''}}</h4>
-    <p-dropdown [options]="municipios" [autoWidth]="false" class="drop-down" [(ngModel)]="municipioSelecionado" placeholder="seleciona un municipio"
+    <p-dropdown [options]="municipios" [autoWidth]="false" class="drop-down" ngDefaultControl [(ngModel)]="municipioSelecionado" placeholder="seleciona un municipio"
       optionLabel="nombre" [style]="{'width':'%'}"></p-dropdown>
     <h4>Turno en el que estudias actualmente: {{TurnoBselecionado ? TurnoBselecionado.turno : ''}}</h4>
-    <p-dropdown [options]="turnob" class="drop-down" [(ngModel)]="TurnoBselecionado" placeholder="seleciona un Turno" optionLabel="turno"></p-dropdown>
+    <p-dropdown [options]="turnob" class="drop-down" ngDefaultControl [(ngModel)]="TurnoBselecionado" placeholder="seleciona un Turno" optionLabel="turno"></p-dropdown>
 
     <h4>Turno en el que deseas llevar el curso en el Politécnico : {{TurnoPselecionado ? TurnoPselecionado.turno : ''}}</h4>
-    <p-listbox [options]="turnop" [(ngModel)]="TurnoPselecionado" optionLabel="turno" [style]="{'width':'100%'}"></p-listbox>
+    <p-listbox [options]="turnop" ngDefaultControl [(ngModel)]="TurnoPselecionado" optionLabel="turno" [style]="{'width':'100%'}"></p-listbox>
 
 
     <h3 class="first">Carrera de Interés (Primera opción) </h3>
     Primera opción {{primeraOpcion||''}}
     <div class="ui-g" style="width:250px;margin-bottom:10px">
       <div class="ui-g-12">
-        <p-radioButton name="primeraOpcG" value="Ambiental" label="Ambiental" [(ngModel)]="primeraOpcion"></p-radioButton>
+        <p-radioButton name="primeraOpcG" value="Ambiental" label="Ambiental" ngDefaultControl [(ngModel)]="primeraOpcion"></p-radioButton>
       </div>
       <div class="ui-g-12">
-        <p-radioButton name="primeraOpcG" value="Alimentos" label="Alimentos" [(ngModel)]="primeraOpcion"></p-radioButton>
+        <p-radioButton name="primeraOpcG" value="Alimentos" label="Alimentos" ngDefaultControl [(ngModel)]="primeraOpcion"></p-radioButton>
       </div>
       <div class="ui-g-12">
-        <p-radioButton name="primeraOpcG" value="Mecatrónica" label="Mecatrónica" [(ngModel)]="primeraOpcion"></p-radioButton>
+        <p-radioButton name="primeraOpcG" value="Mecatrónica" label="Mecatrónica" ngDefaultControl [(ngModel)]="primeraOpcion"></p-radioButton>
       </div>
       <div class="ui-g-12">
-        <p-radioButton name="primeraOpcG" value="Metalúrgica" label="Metalúrgica" [(ngModel)]="primeraOpcion"></p-radioButton>
+        <p-radioButton name="primeraOpcG" value="Metalúrgica" label="Metalúrgica" ngDefaultControl [(ngModel)]="primeraOpcion"></p-radioButton>
       </div>
       <div class="ui-g-12">
-        <p-radioButton name="primeraOpcG" value="Sistemas" label="Sistemas" [(ngModel)]="primeraOpcion"></p-radioButton>
+        <p-radioButton name="primeraOpcG" value="Sistemas" label="Sistemas" ngDefaultControl [(ngModel)]="primeraOpcion"></p-radioButton>
       </div>
     </div>
 
@@ -75,19 +75,19 @@
     Segunda opción {{segundaOpcion||''}}
     <div class="ui-g" style="width:250px;margin-bottom:10px">
       <div class="ui-g-12">
-        <p-radioButton name="segundaOpcG" value="Ambiental" label="Ambiental" [(ngModel)]="segundaOpcion"></p-radioButton>
+        <p-radioButton name="segundaOpcG" value="Ambiental" label="Ambiental" ngDefaultControl [(ngModel)]="segundaOpcion"></p-radioButton>
       </div>
       <div class="ui-g-12">
-        <p-radioButton name="segundaOpcG" value="Alimentos" label="Alimentos" [(ngModel)]="segundaOpcion"></p-radioButton>
+        <p-radioButton name="segundaOpcG" value="Alimentos" label="Alimentos" ngDefaultControl [(ngModel)]="segundaOpcion"></p-radioButton>
       </div>
       <div class="ui-g-12">
-        <p-radioButton name="segundaOpcG" value="Mecatrónica" label="Mecatrónica" [(ngModel)]="segundaOpcion"></p-radioButton>
+        <p-radioButton name="segundaOpcG" value="Mecatrónica" label="Mecatrónica" ngDefaultControl [(ngModel)]="segundaOpcion"></p-radioButton>
       </div>
       <div class="ui-g-12">
-        <p-radioButton name="segundaOpcG" value="Metalúrgica" label="Metalúrgica" [(ngModel)]="segundaOpcion"></p-radioButton>
+        <p-radioButton name="segundaOpcG" value="Metalúrgica" label="Metalúrgica" ngDefaultControl [(ngModel)]="segundaOpcion"></p-radioButton>
       </div>
       <div class="ui-g-12">
-        <p-radioButton name="segundaOpcG" value="Sistemas" label="Sistemas" [(ngModel)]="segundaOpcion"></p-radioButton>
+        <p-radioButton name="segundaOpcG" value="Sistemas" label="Sistemas" ngDefaultControl [(ngModel)]="segundaOpcion"></p-radioButton>
       </div>
     </div>
 
@@ -95,19 +95,19 @@
     Tercera opción {{terceraOpcion||''}}
     <div class="ui-g" style="width:250px;margin-bottom:10px">
       <div class="ui-g-12">
-        <p-radioButton name="terceraOpcG" value="Ambiental" label="Ambiental" [(ngModel)]="terceraOpcion"></p-radioButton>
+        <p-radioButton name="terceraOpcG" value="Ambiental" label="Ambiental" ngDefaultControl [(ngModel)]="terceraOpcion"></p-radioButton>
       </div>
       <div class="ui-g-12">
-        <p-radioButton name="terceraOpcG" value="Alimentos" label="Alimentos" [(ngModel)]="terceraOpcion"></p-radioButton>
+        <p-radioButton name="terceraOpcG" value="Alimentos" label="Alimentos" ngDefaultControl [(ngModel)]="terceraOpcion"></p-radioButton>
       </div>
       <div class="ui-g-12">
-        <p-radioButton name="terceraOpcG" value="Mecatrónica" label="Mecatrónica" [(ngModel)]="terceraOpcion"></p-radioButton>
+        <p-radioButton name="terceraOpcG" value="Mecatrónica" label="Mecatrónica" ngDefaultControl [(ngModel)]="terceraOpcion"></p-radioButton>
       </div>
       <div class="ui-g-12">
-        <p-radioButton name="terceraOpcG" value="Metalúrgica" label="Metalúrgica" [(ngModel)]="terceraOpcion"></p-radioButton>
+        <p-radioButton name="terceraOpcG" value="Metalúrgica" label="Metalúrgica" ngDefaultControl [(ngModel)]="terceraOpcion"></p-radioButton>
       </div>
       <div class="ui-g-12">
-        <p-radioButton name="terceraOpcG" value="Sis" label="Sistemas" [(ngModel)]="terceraOpcion"></p-radioButton>
+        <p-radioButton name="terceraOpcG" value="Sis" label="Sistemas" ngDefaultControl [(ngModel)]="terceraOpcion"></p-radioButton>
       </div>
     </div>
 
