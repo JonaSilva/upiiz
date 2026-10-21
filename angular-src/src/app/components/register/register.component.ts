@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-register',
+  standalone: false,
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
@@ -22,6 +23,16 @@ export class RegisterComponent implements OnInit {
   carreraDos: String;
   carreraTres: String;
   password: String;
+
+  municipios: any[] = [];
+  turnob: any[] = [];
+  turnop: any[] = [];
+  municipioSelecionado: any;
+  TurnoBselecionado: any;
+  TurnoPselecionado: any;
+  primeraOpcion: String;
+  segundaOpcion: String;
+  terceraOpcion: String;
 
   constructor() { }
 

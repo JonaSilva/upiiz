@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { FormsModule } from "@angular/forms";
-import { HttpModule } from "@angular/http";
 import { RouterModule, Routes } from "@angular/router";
 
 import { AppComponent } from './app.component';
@@ -34,10 +33,13 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [
+    provideBrowserGlobalErrorListeners()
+  ],
+  // El formulario de registro usa etiquetas de PrimeNG (p-card, p-dropdown...) que nunca se instalaron
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
