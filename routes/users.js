@@ -5,16 +5,24 @@ const jwt = require('jsonwebtoken');
 const configdb = require('../config/database');
 const User = require('../models/user');
 
+const isNonEmptyString = (value) => typeof value === 'string' && value.trim().length > 0;
+
 //Rout de Register
 
-router.post('/register', (req, res, next) =>{
+router.post('/register', async (req, res) =>{
+    const { username, password } = req.body;
+
+    if (!isNonEmptyString(username) || typeof password !== 'string' || password.length < 8 || password.length > 72) {
+        return res.status(400).json({success: false, msg: 'Usuario o contraseña inválidos (la contraseña debe tener entre 8 y 72 caracteres)'});
+    }
+
     let newUser = new User({
         apellidoP: req.body.apeP,
         apellidoM: req.body.apeM,
         nombre: req.body.name,
         telefonoF: req.body.phoneF,
         telefonoC: req.body.phoneC,
-        username: req.body.username,
+        username: username.trim(),
         bachillerato: req.body.bachelor,
         preparatoria: req.body.high,
         municipio: req.body.muni,
@@ -23,53 +31,58 @@ router.post('/register', (req, res, next) =>{
         carreraUno: req.body.firstDegree,
         carreraDos: req.body.secondDegree,
         carreraTres: req.body.thirdDegree,
-        password: req.body.password
+        password: password
     });
 
-    User.addUser(newUser, (err, user) =>{
-        if(err){
-            res.json({success: false, msg: 'Error al registrar usuario'});
-        }else{
-            res.json({success: true, msg: 'Usuario registrado con éxito'});
+    try {
+        await User.addUser(newUser);
+        res.json({success: true, msg: 'Usuario registrado con éxito'});
+    } catch (err) {
+        if (err && err.code === 11000) {
+            return res.status(409).json({success: false, msg: 'El usuario ya existe'});
         }
-    });
+        res.status(400).json({success: false, msg: 'Error al registrar usuario'});
+    }
 });
 
-router.post('/authenticate', (req, res, next) => {
-    const username = req.body.username;
-    const password = req.body.password;
+router.post('/authenticate', async (req, res, next) => {
+    const { username, password } = req.body;
 
-    User.getUserByUsername(username, (err, user)=>{
-        if(err) throw err;
-        if(!user){
-            return res.json({success:false, msg:"No existe usuario"});
+    if (!isNonEmptyString(username) || typeof password !== 'string') {
+        return res.status(400).json({success: false, msg: 'Usuario o contraseña incorrectos'});
+    }
+
+    try {
+        const user = await User.getUserByUsername(username.trim(), true);
+        const isMatch = user ? await User.comparePassword(password, user.password) : false;
+
+        // Mismo mensaje en ambos casos para no revelar qué usuarios existen
+        if (!isMatch) {
+            return res.status(401).json({success: false, msg: 'Usuario o contraseña incorrectos'});
         }
 
-        User.comparePassword(password, user.password, (err, isMatch)=>{
-            if(err) throw err;
-            if(isMatch){
-                const token = jwt.sign({data:user}, configdb.secret, {
-                    expiresIn: 60480 //1 week
+        // El token solo lleva el id; nunca datos personales ni el hash de la contraseña
+        const token = jwt.sign({}, configdb.secret, {
+            subject: String(user._id),
+            algorithm: 'HS256',
+            expiresIn: '7d'
+        });
 
-                });
-            
-            res.json({
-                success: true,
-                token: 'Bearer '+token,
-                user: {
-                    id: user._id,
-                    name: user.nombre,
-                    username: user.username
-                }
-            });
-            }else{
-                return res.json({success: false, msg: 'Contraseña incorrecta'});
+        res.json({
+            success: true,
+            token: 'Bearer '+token,
+            user: {
+                id: user._id,
+                name: user.nombre,
+                username: user.username
             }
         });
-    });
+    } catch (err) {
+        next(err);
+    }
 });
 
-router.get('/profile', passport.authenticate('jwt', {session:false}), (req, res, next) => {
+router.get('/profile', passport.authenticate('jwt', {session:false}), (req, res) => {
     res.json({user: req.user});
 });
 
